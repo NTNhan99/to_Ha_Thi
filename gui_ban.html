@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi chút động lực nè ✨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #4a4a4a;
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 50%, #fbc2eb 100%);
+            background-size: 200% 200%;
+            animation: gradientBackground 10s ease infinite;
+        }
+
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            position: absolute;
+            text-align: center;
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            width: 90%;
+            max-width: 550px;
+        }
+
+        .hidden {
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        #intro {
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 50px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8px);
+        }
+
+        .intro-text {
+            font-family: 'Nunito', sans-serif;
+            font-size: 2.5rem;
+            color: #4a69bd;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-open {
+            background-color: #fbc531;
+            color: #fff;
+            border: none;
+            padding: 18px 45px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(251, 197, 49, 0.4);
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            overflow: hidden;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .btn-open::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.5s ease;
+        }
+
+        .btn-open:hover {
+            background-color: #e1b12c;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(225, 177, 44, 0.5);
+        }
+
+        .btn-open:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        #message-page {
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 246, 250, 0.9) 100%);
+            padding: 60px 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            z-index: 5;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid rgba(251, 197, 49, 0.3);
+        }
+
+        #message-page::before, #message-page::after {
+            content: '✨';
+            position: absolute;
+            font-size: 8rem;
+            color: rgba(251, 197, 49, 0.15);
+            z-index: 0;
+            filter: blur(1px);
+        }
+
+        #message-page::before {
+            top: -20px;
+            left: -10px;
+            transform: rotate(-15deg);
+        }
+
+        #message-page::after {
+            bottom: -30px;
+            right: -10px;
+            transform: rotate(15deg);
+        }
+
+        .title {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.8rem;
+            color: #e1b12c;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 1;
+        }
+
+        .content-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-weight: 400;
+            color: #555;
+            padding: 0 10px;
+        }
+
+        .star-icon {
+            color: #fbc531;
+            font-size: 2rem;
+            display: inline-block;
+            animation: twinkle 1.5s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { transform: scale(0.9) rotate(0deg); opacity: 0.7; text-shadow: 0 0 5px rgba(251, 197, 49, 0.5); }
+            100% { transform: scale(1.2) rotate(15deg); opacity: 1; text-shadow: 0 0 15px rgba(251, 197, 49, 1); }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #fffdf2;
+            box-shadow: 0 0 10px #fbc531, 0 0 20px #fbc531;
+            animation: sparkleAnim 2.5s linear infinite;
+        }
+
+        @keyframes sparkleAnim {
+            0% { transform: scale(0) translateY(0); opacity: 0; }
+            50% { transform: scale(1.5) translateY(-10px); opacity: 1; }
+            100% { transform: scale(0) translateY(-20px); opacity: 0; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="intro" class="container">
+        <div class="intro-text">Mình có vài lời chúc nhỏ muốn gửi tới Hà Thi...</div>
+        <button class="btn-open" onclick="openMessage()">Bấm vào thử nha ✨</button>
+    </div>
+
+    <div id="message-page" class="container hidden">
+        <div class="content-container">
+            <h1 class="title">Chúc bạn thi tốt! <span class="star-icon">🌟</span></h1>
+            <p class="content">
+                Chúc bạn kỳ thi này sẽ làm bài thật tốt, ra điểm thi siêu cao luôn nha.
+            </p>
+            <p class="content">
+                Bạn cứ bình tĩnh, tự tin và làm bài hết sức mình, vì bạn đã cố gắng học bài chăm chỉ lắm rồi nên đừng sợ gì hết nhé.
+            </p>
+            <p class="content">
+                Bạn nhớ giữ gìn sức khỏe cho tốt nha, ngủ nghỉ đầy đủ mới có đủ sức khỏe và tỉnh táo khi thi á. Chúc Thi gặp được nhiều may mắn! 🍀✨
+            </p>
+            <!-- Biểu tượng trung tâm thay vì trái tim -->
+            <div class="star-icon" style="font-size: 3.5rem; margin-top: 15px;">🌠</div>
+        </div>
+        
+        <!-- Các ngôi sao lấp lánh nhỏ (Sparkles) -->
+        <div class="sparkle" style="top: 15%; left: 10%; animation-delay: 0s;"></div>
+        <div class="sparkle" style="top: 25%; left: 85%; animation-delay: 1s;"></div>
+        <div class="sparkle" style="top: 80%; left: 20%; animation-delay: 2s;"></div>
+        <div class="sparkle" style="top: 75%; left: 80%; animation-delay: 0.5s;"></div>
+        <div class="sparkle" style="top: 45%; left: 90%; animation-delay: 1.5s;"></div>
+    </div>
+
+    <script>
+        function openMessage() {
+            document.getElementById('intro').classList.add('hidden');
+            setTimeout(() => {
+                document.getElementById('message-page').classList.remove('hidden');
+            }, 600); 
+        }
+    </script>
+</body>
+</html>
